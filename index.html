@@ -821,6 +821,292 @@
             transform: scale(1.1);
         }
 
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(26, 0, 51, 0.98));
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+            animation: slideIn 0.5s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: scale(0.8) translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+            max-height: 90vh;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+        }
+
+        .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+            transform: scale(0.9);
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .carousel-nav:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+
+        /* Modal Project Info */
+        .modal-info {
+            padding: 40px;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .modal-info h2 {
+            font-size: 2.5rem;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .modal-info-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-info-section h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-info-section p,
+        .modal-info-section ul {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .modal-info-section ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .modal-info-section li {
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .modal-info-section li::before {
+            content: '▸';
+            color: var(--accent);
+            position: absolute;
+            left: -20px;
+        }
+
+        .modal-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-item {
+            padding: 8px 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tech-item:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: scale(1.1);
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .modal-link {
+            padding: 12px 30px;
+            background: var(--gradient-2);
+            border-radius: 25px;
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .modal-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
         /* Contact */
         .contact {
             text-align: center;
@@ -1061,6 +1347,22 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-container {
+                padding: 20px;
+            }
+
+            .modal-info {
+                padding: 20px;
+            }
+
+            .modal-info h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -1280,7 +1582,7 @@
                             </div>
                             <div class="subject-item">
                                 <span>Tópicos Avançados em BD</span>
-                                <span class="grade">7.48</span>
+                                <span class="grade">8.48</span>
                             </div>
                             <div class="subject-item">
                                 <span>Redes de Computadores</span>
@@ -1442,7 +1744,7 @@
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Meus Projetos</h2>
             <div class="projects-grid">
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="100" onclick="openProjectModal(1)">
                     <div class="project-img">🏛️</div>
                     <div class="project-info">
                         <h3>Sistema ASSEGO</h3>
@@ -1456,20 +1758,21 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="200" onclick="openProjectModal(2)">
                     <div class="project-img">💳</div>
                     <div class="project-info">
-                        <h3>Gateway de Pagamento</h3>
-                        <p>Integrei sistemas de pagamento com bancos SICOOB e Itaú usando certificados digitais para transações seguras.</p>
+                        <h3>Challenge Goiás</h3>
+                        <p>Integrei sistemas de pagamento com o banco Itaú usando certificados digitais para transações seguras.</p>
                         <div class="project-tags">
                             <span class="tag">API Bancária</span>
                             <span class="tag">Certificados</span>
                             <span class="tag">Security</span>
+                            <span class="tag">API's</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="300" onclick="openProjectModal(3)">
                     <div class="project-img">🤖</div>
                     <div class="project-info">
                         <h3>Automação Inteligente</h3>
@@ -1482,11 +1785,11 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="400" onclick="openProjectModal(4)">
                     <div class="project-img">🚀</div>
                     <div class="project-info">
-                        <h3>API RESTful Escalável</h3>
-                        <p>Desenvolvi APIs robustas com Spring Boot para integração de sistemas empresariais.</p>
+                        <h3>Sistema de Logisticas com o GoogleMaps</h3>
+                        <p>Sistema feito para ajudar o pessoal que faz as entregas de mercadorias</p>
                         <div class="project-tags">
                             <span class="tag">Java</span>
                             <span class="tag">Spring Boot</span>
@@ -1495,34 +1798,31 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="project-img">📊</div>
-                    <div class="project-info">
-                        <h3>Dashboard Analytics</h3>
-                        <p>Criei dashboard interativo com Angular para visualização de dados em tempo real.</p>
-                        <div class="project-tags">
-                            <span class="tag">Angular</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">D3.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="project-img">📱</div>
-                    <div class="project-info">
-                        <h3>App Mobile Flutter</h3>
-                        <p>Desenvolvi aplicativo mobile multiplataforma com Flutter integrado a APIs REST.</p>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Dart</span>
-                            <span class="tag">Mobile</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeProjectModal()">✕</div>
+            <div class="modal-body">
+                <div class="carousel-container">
+                    <div class="carousel" id="carousel">
+                        <!-- Slides will be dynamically generated -->
+                    </div>
+                    <div class="carousel-nav carousel-prev" onclick="changeSlide(-1)">‹</div>
+                    <div class="carousel-nav carousel-next" onclick="changeSlide(1)">›</div>
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <!-- Indicators will be dynamically generated -->
+                    </div>
+                </div>
+                <div class="modal-info" id="modalInfo">
+                    <!-- Project info will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -1572,7 +1872,7 @@
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>
-        <p style="opacity: 0.8;">© 2025 Matheus Renato | Criado com ❤️ e muito ☕</p>
+        <p style="opacity: 0.8;">© 2025 Matheus Renato</p>
     </footer>
 
     <!-- Scroll to Top -->
@@ -1785,6 +2085,245 @@
         if (statsSection) {
             statsObserver.observe(statsSection);
         }
+
+        // Project Modal Functions
+        let currentSlide = 0;
+        let currentProject = null;
+
+        const projectsData = {
+            1: {
+                title: "Sistema ASSEGO",
+                images: [
+                    { src: "loginAssego.png", alt: "Login ASSEGO", description: "Tela de login do sistema ASSEGO" },
+                    { src: "inicialAssego.png", alt: "Pagina Inicial ASSEGO", description: "Tela Inicial de busca dos associados" },
+                    { src: "presidenciaAssego.png", alt: "Pagina Presidencial ASSEGO", description: "Tela de Estatisticas e flexivel do presidente do clube" },
+                    { src: "relatoriosAssego.png", alt: "Pagina de Relatorios ASSEGO", description: "Tela de geração dos Relatorios por Departamento" },
+                ],
+                description: "Sistema de gestão completo desenvolvido para a ASSEGO - Associação dos Servidores do Estado de Goiás. Uma plataforma robusta que revolucionou a forma como a associação gerencia seus processos internos.",
+                features: [
+                    "Dashboard administrativo com métricas em tempo real",
+                    "Sistema de gestão de associados com controle completo",
+                    "Módulo financeiro com relatórios automatizados",
+                    "Integração bancária para processamento de pagamentos",
+                    "Sistema de notificações e comunicação interna",
+                    "Sistema de Roles e permissões baseado no usuario e no departamento do usuario"
+                ],
+                technologies: ["PHP 8", "MySQL", "JavaScript", "Chart.js", "Bootstrap 5", "jQuery", "API SICOOB"],
+                challenges: "O maior desafio foi integrar o sistema de pagamento bancário com certificados digitais A1, garantindo segurança e conformidade com as normas bancárias. Também foi necessário otimizar queries complexas para processar grandes volumes de dados financeiros.",
+                results: [
+                    "Redução de 70% no tempo de processamento de pagamentos",
+                    "Aumento de 85% na eficiência administrativa",
+                    "100% de uptime nos últimos 6 meses",
+                    "Processamento de mais de 5000 transações mensais"
+                ]
+            },
+            2: {
+                title: "Challenge Goias",
+                images: [
+                    { src: "inicialChallenge.png", alt: "Inicial Assego", description: "Tela de inical do sistema" }
+                ],
+                description: "Gateway de pagamento robusto com integração direta com o banco do Itaú, oferecendo processamento seguro e eficiente de transações financeiras.",
+                features: [
+                    "Integração com múltiplos bancos (Itaú)",
+                    "Processamento de pagamentos PIX",
+                    "Sistema de split de pagamento",
+                    "Antifraude integrado",
+                    "Webhook para notificações em tempo real",
+                    "Dashboard de monitoramento de transações"
+                ],
+                technologies: ["PHP", "API's", "OAuth 2.0", "JWT", "MySQL"],
+                challenges: "Implementar a segurança necessária para estar em conformidade com PCI DSS e integrar diferentes APIs bancárias com suas particularidades específicas.",
+                results: [
+                    "Processamento de varias transações diárias",
+                    "Taxa de sucesso de 99% nas transações",
+                    "Tempo médio de resposta de 200ms",
+                    "Zero incidentes de segurança"
+                ]
+            },
+            3: {
+                title: "Automação Inteligente",
+                images: [
+                    { src: "ManyChat.jpg", alt: "ManyChat", description: "Automação de Fluxos de conversas" },
+                    { src: "Xano.png", alt: "Xano", description: "Database Xano Online" },
+                    { placeholder: "Fio Guia APP", description: "Começo de desenvolvimento do aplicativo deles em Flutter" }
+                ],
+                description: "Sistema de automação inteligente para atendimento ao cliente usando ManyChat e integrações customizadas, proporcionando atendimento 24/7.",
+                features: [
+                    "Chatbot para atendimento inicial",
+                    "Integração com WhatsApp Business API",
+                    "Sistema de tickets automatizado",
+                    "Respostas personalizadas baseadas em contexto",
+                    "Transferência inteligente para atendente humano",
+                    "Analytics detalhado de conversações"
+                ],
+                technologies: ["ManyChat", "Xano", "Api's", "WhatsApp API"],
+                challenges: "Criar um fluxo de conversação natural que pudesse resolver 80% dos atendimentos sem intervenção humana, mantendo alta satisfação do cliente.",
+                results: [
+                    "Redução de 75% no tempo de primeira resposta",
+                    "80% de resolução automática",
+                    "Agendamento das consultas 100% automatizado",
+                    "Melhor Satisfação do cliente"
+                ]
+            },
+            4: {
+                title: "Sistema de Logistica de entregas",
+                images: [
+                    { placeholder: "Logisticas de Entrega", description: "Interface do Mapa" },
+                    { placeholder: "Swagger Documentation", description: "Documentação interativa das API's" },
+                    { placeholder: "Paginas Responsivas", description: "Para Android e IOS para entregadores" },
+                ],
+                description: "Sistema feito para ajudar o pessoal que faz as entregas de mercadorias e etc...",
+                features: [
+                    "Arquiterura de Projetos",
+                    "Versionamento de API",
+                    "Documentação automática com Swagger"
+                ],
+                technologies: ["Java 17", "Spring Boot", "Swagger", "Docker", "RabbitMQ","React"],
+                challenges: "Desenvolver um site de logisticas de entrega utilizando a api do GoogleMaps para mapear as rotas",
+                results: [
+                    "Responsividade desktop e app",
+                    "Logistica da entrega feita por IA",
+                    "Melhor mapeamento das rotas para o entregador",
+                ]
+            }
+        };
+
+        function openProjectModal(projectId) {
+            currentProject = projectsData[projectId];
+            currentSlide = 0;
+            
+            const modal = document.getElementById('projectModal');
+            const carousel = document.getElementById('carousel');
+            const indicators = document.getElementById('carouselIndicators');
+            const modalInfo = document.getElementById('modalInfo');
+            
+            // Create carousel slides
+            carousel.innerHTML = currentProject.images.map((img, index) => `
+                <div class="carousel-slide ${index === 0 ? 'active' : ''}">
+                    ${img.src ? `
+                        <img src="${img.src}" alt="${img.alt}" style="width: 100%; height: 100%; object-fit: contain;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 20px; color: white;">
+                            <div style="font-size: 1rem; font-weight: 600;">${img.description}</div>
+                        </div>
+                    ` : `
+                        <div class="carousel-placeholder">
+                            <div style="text-align: center;">
+                                <div style="font-size: 4rem; margin-bottom: 20px;">${projectId === 1 ? '🏛️' : projectId === 2 ? '💳' : projectId === 3 ? '🤖' : projectId === 4 ? '🚀' : projectId === 5 ? '📊' : '📱'}</div>
+                                <div style="font-size: 1.5rem; font-weight: 600;">${img.placeholder}</div>
+                                <div style="font-size: 1rem; opacity: 0.8; margin-top: 10px;">${img.description}</div>
+                            </div>
+                        </div>
+                    `}
+                </div>
+            `).join('');
+            
+            // Create indicators
+            indicators.innerHTML = currentProject.images.map((_, index) => `
+                <div class="carousel-dot ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></div>
+            `).join('');
+            
+            // Create project info
+            modalInfo.innerHTML = `
+                <h2>${currentProject.title}</h2>
+                
+                <div class="modal-info-section">
+                    <h3><i class="fas fa-info-circle"></i> Descrição</h3>
+                    <p>${currentProject.description}</p>
+                </div>
+                
+                <div class="modal-info-section">
+                    <h3><i class="fas fa-star"></i> Principais Funcionalidades</h3>
+                    <ul>
+                        ${currentProject.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="modal-info-section">
+                    <h3><i class="fas fa-code"></i> Tecnologias Utilizadas</h3>
+                    <div class="modal-tech-stack">
+                        ${currentProject.technologies.map(tech => `<span class="tech-item">${tech}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="modal-info-section">
+                    <h3><i class="fas fa-puzzle-piece"></i> Desafios Superados</h3>
+                    <p>${currentProject.challenges}</p>
+                </div>
+                
+                <div class="modal-info-section">
+                    <h3><i class="fas fa-trophy"></i> Resultados Alcançados</h3>
+                    <ul>
+                        ${currentProject.results.map(result => `<li>${result}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="modal-links">
+                    <a href="#" class="modal-link" onclick="event.preventDefault(); alert('Link do projeto será adicionado em breve!')">
+                        <i class="fas fa-external-link-alt"></i> Ver Projeto
+                    </a>
+                    <a href="#" class="modal-link" onclick="event.preventDefault(); alert('Código será disponibilizado em breve!')">
+                        <i class="fab fa-github"></i> Ver Código
+                    </a>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('projectModal');
+            if (e.target === modal) {
+                closeProjectModal();
+            }
+        });
+
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('projectModal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeProjectModal();
+                } else if (e.key === 'ArrowLeft') {
+                    changeSlide(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeSlide(1);
+                }
+            }
+        });
     </script>
 </body>
 </html>
