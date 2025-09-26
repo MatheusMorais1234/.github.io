@@ -294,17 +294,7 @@
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
-        /* Floating Animation */
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* About Section */
+        /* Sections */
         .section {
             padding: 100px 50px;
             position: relative;
@@ -334,6 +324,7 @@
             border-radius: 2px;
         }
 
+        /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -396,6 +387,149 @@
 
         .about-text p {
             margin-bottom: 20px;
+        }
+
+        /* Academic Section Styles */
+        .academic-section {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.02), rgba(255, 0, 255, 0.02));
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--light);
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            opacity: 0.3;
+        }
+
+        .excellence-card {
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .excellence-card:hover {
+            transform: translateY(-10px) rotateY(10deg);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+            border-color: var(--accent);
+        }
+
+        .grade-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--gradient-3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--dark);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+
+        .excellence-card h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .excellence-card p {
+            color: var(--light);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .area-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .area-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .area-header {
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .area-header h4 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .area-subjects {
+            padding: 20px;
+        }
+
+        .subject-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .subject-item:hover {
+            transform: translateX(10px);
+            color: var(--primary);
+        }
+
+        .subject-item:last-child {
+            border-bottom: none;
+        }
+
+        .subject-item .grade {
+            font-weight: bold;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Skills */
@@ -778,6 +912,76 @@
             cursor: pointer;
         }
 
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid transparent;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Progress Bar Animation */
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -847,70 +1051,6 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        /* Loading Animation */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--darker);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader-spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid transparent;
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Scroll to top button */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s;
-            z-index: 999;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
     </style>
 </head>
@@ -986,27 +1126,27 @@
     </section>
 
     <!-- Academic Section -->
-    <section id="academic" class="section" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.02), rgba(255, 0, 255, 0.02));">
+    <section id="academic" class="section academic-section">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Formação Acadêmica</h2>
             <p style="text-align: center; font-size: 1.3rem; color: var(--primary); margin-bottom: 60px;" data-aos="fade-up">
-                Análise e Desenvolvimento de Sistemas - SENAC
+                Análise e Desenvolvimento de Sistemas - Centro Universitário SENAC
             </p>
             
             <!-- Stats Cards -->
             <div class="stats-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 60px;">
                 <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="stat-number" id="avgGrade">8.95</div>
+                    <div class="stat-number" id="avgGrade">0</div>
                     <div class="stat-label">Média Geral</div>
                     <div class="stat-icon">📊</div>
                 </div>
                 <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="stat-number" id="perfectGrades">11</div>
+                    <div class="stat-number" id="perfectGrades">0</div>
                     <div class="stat-label">Notas Máximas</div>
                     <div class="stat-icon">🏆</div>
                 </div>
                 <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="stat-number" id="totalSubjects">36</div>
+                    <div class="stat-number" id="totalSubjects">0</div>
                     <div class="stat-label">Disciplinas Cursadas</div>
                     <div class="stat-icon">📚</div>
                 </div>
@@ -1042,8 +1182,8 @@
                     </div>
                     <div class="excellence-card" data-aos="flip-left" data-aos-delay="250">
                         <div class="grade-badge">10.0</div>
-                        <h4>Análise e Projeto de Sistemas</h4>
-                        <p>UML, DER e metodologias de análise</p>
+                        <h4>Desenvolvimento com Frameworks</h4>
+                        <p>Angular, React e Vue.js avançado</p>
                     </div>
                     <div class="excellence-card" data-aos="flip-left" data-aos-delay="300">
                         <div class="grade-badge">9.80</div>
@@ -1052,8 +1192,8 @@
                     </div>
                     <div class="excellence-card" data-aos="flip-left" data-aos-delay="350">
                         <div class="grade-badge">9.75</div>
-                        <h4>Legislação em Informática</h4>
-                        <p>LGPD, direitos digitais e compliance</p>
+                        <h4>Tecnologias Emergentes</h4>
+                        <p>IA, Machine Learning e IoT</p>
                     </div>
                 </div>
             </div>
@@ -1072,7 +1212,7 @@
                         <div class="area-subjects">
                             <div class="subject-item">
                                 <span>Desenvolvimento com Frameworks</span>
-                                <span class="grade">8.84</span>
+                                <span class="grade">10.0</span>
                             </div>
                             <div class="subject-item">
                                 <span>Desenvolvimento Web</span>
@@ -1086,6 +1226,10 @@
                                 <span>Web Services</span>
                                 <span class="grade">9.13</span>
                             </div>
+                            <div class="subject-item">
+                                <span>Laboratório de Programação</span>
+                                <span class="grade">9.38</span>
+                            </div>
                         </div>
                     </div>
                     
@@ -1096,6 +1240,10 @@
                         </div>
                         <div class="area-subjects">
                             <div class="subject-item">
+                                <span>Análise e Projeto de Sistemas</span>
+                                <span class="grade">9.50</span>
+                            </div>
+                            <div class="subject-item">
                                 <span>Engenharia de Software</span>
                                 <span class="grade">8.75</span>
                             </div>
@@ -1104,12 +1252,12 @@
                                 <span class="grade">8.58</span>
                             </div>
                             <div class="subject-item">
-                                <span>Metodologias Ágeis</span>
-                                <span class="grade">7.72</span>
-                            </div>
-                            <div class="subject-item">
                                 <span>Qualidade de Software</span>
                                 <span class="grade">9.25</span>
+                            </div>
+                            <div class="subject-item">
+                                <span>Verificação e Validação</span>
+                                <span class="grade">9.40</span>
                             </div>
                         </div>
                     </div>
@@ -1133,8 +1281,12 @@
                                 <span class="grade">9.38</span>
                             </div>
                             <div class="subject-item">
-                                <span>Segurança da Informação</span>
-                                <span class="grade">7.25</span>
+                                <span>Aplicações Distribuídas</span>
+                                <span class="grade">10.0</span>
+                            </div>
+                            <div class="subject-item">
+                                <span>Arquitetura de Software</span>
+                                <span class="grade">10.0</span>
                             </div>
                         </div>
                     </div>
@@ -1155,162 +1307,6 @@
             </div>
         </div>
     </section>
-
-    <style>
-        /* Academic Section Styles */
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--light);
-            opacity: 0.8;
-            margin-bottom: 15px;
-        }
-
-        .stat-icon {
-            font-size: 2rem;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            opacity: 0.3;
-        }
-
-        .excellence-card {
-            background: var(--card-bg);
-            border: 2px solid var(--primary);
-            border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .excellence-card:hover {
-            transform: translateY(-10px) rotateY(10deg);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
-            border-color: var(--accent);
-        }
-
-        .grade-badge {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            background: var(--gradient-3);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: var(--dark);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
-        }
-
-        .excellence-card h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            margin-top: 20px;
-        }
-
-        .excellence-card p {
-            color: var(--light);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        .area-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .area-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-        }
-
-        .area-header {
-            padding: 20px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .area-header h4 {
-            margin: 0;
-            font-size: 1.3rem;
-        }
-
-        .area-subjects {
-            padding: 20px;
-        }
-
-        .subject-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s;
-        }
-
-        .subject-item:hover {
-            transform: translateX(10px);
-            color: var(--primary);
-        }
-
-        .subject-item:last-child {
-            border-bottom: none;
-        }
-
-        .subject-item .grade {
-            font-weight: bold;
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes progressShine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Number Counter Animation */
-        @keyframes countUp {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .stat-number {
-            animation: countUp 1s ease-out;
-        }
-    </style>
 
     <!-- Skills Section -->
     <section id="skills" class="section">
